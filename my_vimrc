@@ -1,0 +1,14 @@
+set expandtab      " use space to replace tab
+set tabstop=4      " space number
+set shiftwidth=4   " auto indent width
+set nowrap         " no line wrap
+"set guioptions-=t " remove tool bar
+"set guioptions-=m " remove menu bar
+
+" vim-plug manager
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'ctrlpvim/ctrlp.vim'
+call plug#end()
+
+nmap <silent> <F8> :NERDTreeToggle<cr>
