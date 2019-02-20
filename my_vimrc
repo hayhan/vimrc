@@ -1,14 +1,109 @@
-set expandtab      " use space to replace tab
-set tabstop=4      " space number
-set shiftwidth=4   " auto indent width
-set nowrap         " no line wrap
-"set guioptions-=t " remove tool bar
-"set guioptions-=m " remove menu bar
+"------------------------------------------------------------------------------
+" The vim-plug management
+"
+" :PlugInstall  // Install the plugins
+" :PlugStatus   // Check plugins status
+" :PlugUpdate   // Update all the plugins
+" :PlugUpgrade  // Update the vim-plug itself
+" :PlugClean    // Clean plugins
+"
 
-" vim-plug manager
+" The vim-plug starts with plugin installing destination
 call plug#begin('~/.vim/plugged')
+
+" One stop shop for vim colorschemes
+Plug 'flazz/vim-colorschemes'
+
+" Precision colors for machines and people
+Plug 'altercation/vim-colors-solarized'
+
+" Load NERDTree conditionally
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+
+" Fuzzy finding files. The fzf might be better but has binary fzf dependency.
 Plug 'ctrlpvim/ctrlp.vim'
+
+" The vim-plug ends here
 call plug#end()
 
+
+"------------------------------------------------------------------------------
+" Basic settings
+"
+
+" Set 'nocompatible' to ward off unexpected things that your distro might
+" have made, as well as sanely reset options when re-sourcing .vimrc
+set nocompatible
+
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+filetype indent plugin on
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
+
+" Enable syntax highlighting
+syntax on
+
+" Better command-line completion
+set wildmenu
+
+" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
+" mapping of <C-L> below)
+set hlsearch
+
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+
+" The cursor line highlighted
+set cursorline
+
+" Enable use of the mouse for all modes
+set mouse=a
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+" No line wrap
+set nowrap
+
+
+"------------------------------------------------------------------------------
+"tab related settings
+"
+
+set expandtab           " use space to replace tab
+set tabstop=4           " space number
+set shiftwidth=4        " auto indent width
+
+
+"------------------------------------------------------------------------------
+" GUI related settings
+"
+
+"set guioptions-=t      " remove tool bar for gui
+"set guioptions-=m      " remove menu bar for gui
+
+
+"------------------------------------------------------------------------------
+" Color scheme settings
+"
+
+syntax enable
+set background=dark     " dark or light
+colorscheme molokai     " solarized, wombat, molokai, candycode, kate, koehler
+
+
+"------------------------------------------------------------------------------
+" Mappings
+"
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
+
+" Use F8 to open/close NERDTree side panel
 nmap <silent> <F8> :NERDTreeToggle<cr>
