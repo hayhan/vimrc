@@ -14,14 +14,14 @@ call plug#begin('~/.vim/plugged')
 " One stop shop for vim colorschemes
 Plug 'flazz/vim-colorschemes'
 
-" Precision colors for machines and people
-Plug 'altercation/vim-colors-solarized'
-
 " Load NERDTree conditionally
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
 " Fuzzy finding files. The fzf might be better but has binary fzf dependency.
 Plug 'ctrlpvim/ctrlp.vim'
+
+" Automatic closing of quotes, parenthesis, brackets, etc
+Plug 'raimondi/delimitmate'
 
 " The vim-plug ends here
 call plug#end()
