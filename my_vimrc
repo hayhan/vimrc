@@ -86,6 +86,7 @@ set shiftwidth=4        " auto indent width
 
 "set guioptions-=t      " remove tool bar for gui
 "set guioptions-=m      " remove menu bar for gui
+"set guifont=Menlo\ Regular:h14
 
 
 "------------------------------------------------------------------------------
