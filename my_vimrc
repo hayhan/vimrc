@@ -9,7 +9,8 @@
 "
 
 " The vim-plug starts with plugin installing destination
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')  " under linux/macos
+"call plug#begin('C:\Users\xxx\vimfiles\plugged')  " under win
 
 " One stop shop for vim colorschemes
 Plug 'flazz/vim-colorschemes'
@@ -86,7 +87,8 @@ set shiftwidth=4        " auto indent width
 
 "set guioptions-=t      " remove tool bar for gui
 "set guioptions-=m      " remove menu bar for gui
-"set guifont=Menlo\ Regular:h14
+"set guifont=Menlo\ Regular:h14	 " works under linux/macos
+"set guifont=DejaVu_Sans_Mono:h13  " works under win
 
 
 "------------------------------------------------------------------------------
