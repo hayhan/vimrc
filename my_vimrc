@@ -24,6 +24,18 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Automatic closing of quotes, parenthesis, brackets, etc
 Plug 'raimondi/delimitmate'
 
+" The indentLine for languages like python, golang, etc.
+Plug 'Yggdroot/indentLine'
+
+" The tagbar to overview the structure of source file, and it depends on ctags
+"Plug 'majutsushi/tagbar'
+
+" The language rust plugin
+"Plug 'rust-lang/rust.vim'
+
+" Auto complete for python. The jedi plugin needs jedi, so pip install jedi.
+"Plug 'davidhalter/jedi-vim'
+
 " The vim-plug ends here
 call plug#end()
 
@@ -109,4 +121,7 @@ colorscheme molokai     " solarized, wombat, molokai, candycode, kate, koehler
 nnoremap <C-L> :nohl<CR><C-L>
 
 " Use F8 to open/close NERDTree side panel
-nmap <silent> <F8> :NERDTreeToggle<cr>
+nmap <F8> :NERDTreeToggle<CR>
+
+" Use F9 to open/close tagbar side panel
+"nmap <F9> :TagbarToggle<CR>
