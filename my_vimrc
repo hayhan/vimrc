@@ -18,23 +18,29 @@ Plug 'flazz/vim-colorschemes'
 " Load NERDTree conditionally
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
-" Fuzzy finding files. The fzf might be better but has binary fzf dependency.
+" Block code comments toggling
+Plug 'preservim/nerdcommenter'
+
+" Fuzzy finding files. The fzf might be better but has binary fzf dependency
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Automatic closing of quotes, parenthesis, brackets, etc
 Plug 'raimondi/delimitmate'
 
-" The indentLine for languages like python, golang, etc.
+" The tagbar that overviews the structure of source file. It depends on ctags
+Plug 'majutsushi/tagbar'
+
+" The indentLine for languages like python, golang, etc
 Plug 'Yggdroot/indentLine'
 
-" The tagbar to overview the structure of source file, and it depends on ctags
-"Plug 'majutsushi/tagbar'
+" Auto completion for python
+Plug 'davidhalter/jedi-vim'
 
-" The language rust plugin
-"Plug 'rust-lang/rust.vim'
+" Static grammar checking for python. Need pip install flake8 separately
+Plug 'nvie/vim-flake8'
 
-" Auto complete for python. The jedi plugin needs jedi, so pip install jedi.
-"Plug 'davidhalter/jedi-vim'
+" The language rust official plugin
+" Plug 'rust-lang/rust.vim'
 
 " The vim-plug ends here
 call plug#end()
@@ -120,8 +126,14 @@ colorscheme molokai     " solarized, wombat, molokai, candycode, kate, koehler
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
+" Use F7 to run vim-flake8
+" F7 is the default mapping for vim-flake8
+
 " Use F8 to open/close NERDTree side panel
 nmap <F8> :NERDTreeToggle<CR>
 
 " Use F9 to open/close tagbar side panel
-"nmap <F9> :TagbarToggle<CR>
+nmap <F9> :TagbarToggle<CR>
+
+" Re-Map jedi completion key from <C-Space> because of win ssh issue
+let g:jedi#completions_command = "<C-M>"
