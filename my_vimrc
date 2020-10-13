@@ -123,7 +123,7 @@ set background=dark     " dark or light
 
 "------------------------------------------------------------------------------
 " Mappings
-" Change the mappings in case they confilct with others on your system
+" Change the mappings in case they conflict with others on your system
 "
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
