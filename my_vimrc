@@ -13,7 +13,7 @@
 
 " The vim-plug starts with plugin installing destination
 call plug#begin('~/.vim/plugged')  " under linux/macos
-"call plug#begin('C:\Users\xxx\vimfiles\plugged')  " under win
+"call plug#begin('C:\Users\your_username\vimfiles\plugged')  " under win
 
 " One stop shop for vim colorschemes
 Plug 'flazz/vim-colorschemes'
@@ -118,11 +118,12 @@ set shiftwidth=4        " auto indent width
 
 syntax enable
 set background=dark     " dark or light
-colorscheme molokai     " solarized, wombat, molokai, candycode, kate, koehler
+"colorscheme molokai     " solarized, wombat, molokai, candycode, kate, koehler
 
 
 "------------------------------------------------------------------------------
 " Mappings
+" Change the mappings in case they confilct with others on your system
 "
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
