@@ -5,7 +5,7 @@ The vimrc file contains some vim plugins that are common to developers as well
 as specific ones for python and rust languages.
 
 I tried to select the most popular plugins that have dependencies as few as
-possible. See the comments in my_vimrc to see the details.
+possible. See the comments in my_vimrc for the details.
 
 The vimrc works well on MacOS, Linux and Windows 10.
 
