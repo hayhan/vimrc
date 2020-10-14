@@ -14,9 +14,8 @@ The vimrc works well on MacOS, Linux and Windows 10.
 For MacOS and Linux, clone it to ~/.vim and then copy my_vimrc to ~/ and rename
 it to .vimrc.
 
-For Windows, clone it to C:\Users\your_username\vimfiles and then copy
-my_vimrc to vim installation directory, e.g. C:\Program Fiels\Vim, and change
-its name to _vimrc. Comment out line 15 and uncomment line 16 with your
-username in _vimrc.
+For Windows, clone it to C:\Users\your_username\vimfiles and then copy my_vimrc
+to C:\Users\your_username\ and rename it to _vimrc. Comment out line 15 and
+uncomment line 16 with your username changing in _vimrc.
 
 At last, open the .vimrc or _vimrc with vim and run :PlugInstall
