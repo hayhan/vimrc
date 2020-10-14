@@ -12,8 +12,8 @@
 " respectively. Install ctags binary and pip install flake8 (in virtualenv).
 
 " The vim-plug starts with plugin installing destination
-call plug#begin('~/.vim/plugged')  " under linux/macos
-"call plug#begin('C:\Users\your_username\vimfiles\plugged')  " under win
+call plug#begin('~/.vim/plugged')  " under macos/linux
+"call plug#begin('C:\Users\your_username\vimfiles\plugged')  " under windows
 
 " One stop shop for vim colorschemes
 Plug 'flazz/vim-colorschemes'
@@ -139,5 +139,5 @@ nmap <F8> :NERDTreeToggle<CR>
 " Use F9 to open/close tagbar side panel
 nmap <F9> :TagbarToggle<CR>
 
-" Re-Map jedi completion key from <C-Space> because of win ssh issue
-let g:jedi#completions_command = "<C-M>"
+" Re-Map jedi completion key from <C-Space> when ssh from powershell in windows
+"let g:jedi#completions_command = "<C-H>"
