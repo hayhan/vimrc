@@ -45,7 +45,7 @@ Plug 'nvie/vim-flake8'
 "Plug 'rust-lang/rust.vim'
 
 " The lsp client coc.nvim. We can register the language servers by using coc
-" extensions instead of here.
+" extensions instead of writing them here.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " The vim-plug ends here

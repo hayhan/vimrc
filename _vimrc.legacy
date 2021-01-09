@@ -10,6 +10,8 @@
 "------------------------------------------------------------------------------
 " The plugins tagbar and vim-flake8 have dependencies on ctags and flake8
 " respectively. Install ctags binary and pip install flake8 (in virtualenv).
+"
+"
 
 " The vim-plug starts with plugin installing destination
 call plug#begin('~/.vim/plugged')  " under macos/linux
