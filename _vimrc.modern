@@ -1,0 +1,222 @@
+"------------------------------------------------------------------------------
+" The vim-plug management
+"
+" :PlugInstall  // Install the plugins
+" :PlugStatus   // Check plugins status
+" :PlugUpdate   // Update all the plugins
+" :PlugUpgrade  // Update the vim-plug itself
+" :PlugClean    // Clean plugins
+"
+"------------------------------------------------------------------------------
+" The plugins tagbar and vim-flake8 have dependencies on ctags and flake8
+" respectively. Install ctags binary and pip install flake8 (in virtualenv).
+" The LeaderF depends on python, and install ripgrep (rg) to grep words.
+" The coc-nvim depends on nodejs.
+
+" The vim-plug starts with plugin installing destination
+call plug#begin('~/.vim/plugged')  " under macos/linux
+"call plug#begin('C:\Users\your_username\vimfiles\plugged')  " under windows
+
+" One stop shop for vim colorschemes
+Plug 'flazz/vim-colorschemes'
+
+" Load NERDTree conditionally
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+
+" Block code comments toggling
+Plug 'preservim/nerdcommenter'
+
+" Fuzzy finding files.
+Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension'}
+
+" Automatic closing of quotes, parenthesis, brackets, etc
+Plug 'raimondi/delimitmate'
+
+" The tagbar that overviews the structure of source file. It depends on ctags
+Plug 'majutsushi/tagbar'
+
+" The indentLine for languages like python, golang, etc
+Plug 'Yggdroot/indentLine'
+
+" Static grammar checking for python. Need pip install flake8 separately
+Plug 'nvie/vim-flake8'
+
+" The language rust official plugin
+"Plug 'rust-lang/rust.vim'
+
+" The lsp client coc.nvim. We can register the language servers by using coc
+" extensions instead of here.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" The vim-plug ends here
+call plug#end()
+
+
+"------------------------------------------------------------------------------
+" Basic settings
+"
+
+" Set 'nocompatible' to ward off unexpected things that your distro might
+" have made, as well as sanely reset options when re-sourcing .vimrc
+set nocompatible
+
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+filetype indent plugin on
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
+
+" Enable syntax highlighting
+syntax on
+
+" Better command-line completion
+set wildmenu
+
+" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
+" mapping of <C-L> below)
+set hlsearch
+
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+
+" The cursor line highlighted
+set cursorline
+
+" Enable use of the mouse for all modes
+set mouse=a
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+" No line wrap
+set nowrap
+
+
+"------------------------------------------------------------------------------
+"tab related settings
+"
+
+set expandtab           " use space to replace tab
+set tabstop=4           " space number
+set shiftwidth=4        " auto indent width
+
+
+"------------------------------------------------------------------------------
+" GUI related settings
+"
+
+"set guioptions-=t      " remove tool bar for gui
+"set guioptions-=m      " remove menu bar for gui
+"set guifont=Menlo\ Regular:h14	 " works under linux/macos
+"set guifont=DejaVu_Sans_Mono:h13  " works under win
+
+
+"------------------------------------------------------------------------------
+" Color scheme settings
+"
+
+syntax enable
+set background=dark     " dark or light
+"colorscheme molokai     " solarized, wombat, molokai, candycode, kate, koehler
+
+
+"------------------------------------------------------------------------------
+" Mappings
+" Change the mappings in case they conflict with others on your system
+"
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
+
+" Use F7 to run vim-flake8
+" F7 is the default mapping for vim-flake8
+
+" Use F8 to open/close NERDTree side panel
+nmap <F8> :NERDTreeToggle<CR>
+
+" Use F9 to open/close tagbar side panel
+nmap <F9> :TagbarToggle<CR>
+
+
+"------------------------------------------------------------------------------
+" The coc-nvim config. See https://github.com/neoclide/coc.nvim for more.
+"
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+"set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+
+"------------------------------------------------------------------------------
+" The LeaderF config. See https://github.com/Yggdroot/LeaderF for more.
+"
+
+" Do not show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+
+" Popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = {'left': "\ue0b0", 'right': "\ue0b2", 'font': "Menlo"}
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0}
+
+" The basic file search
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+" Search with ripgrep
+noremap <leader>fq :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <leader>fw :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+
+" Search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
