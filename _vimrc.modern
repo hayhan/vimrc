@@ -95,6 +95,9 @@ set backspace=indent,eol,start
 " No line wrap
 set nowrap
 
+" The terminal window scroll buffer size, default 10000 lines
+set termwinscroll=10000
+
 
 "------------------------------------------------------------------------------
 "tab related settings
