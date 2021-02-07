@@ -42,7 +42,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'nvie/vim-flake8'
 
 " The language rust official plugin
-"Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 " The lsp client coc.nvim. We can register the language servers by using coc
 " extensions instead of writing them here.
@@ -124,7 +124,7 @@ set shiftwidth=4        " auto indent width
 
 syntax enable
 set background=dark     " dark or light
-"colorscheme molokai     " solarized, wombat, molokai, candycode, kate, koehler
+colorscheme PaperColor  " gruvbox, molokai, PaperColor, solarized, koehler
 
 
 "------------------------------------------------------------------------------
@@ -191,6 +191,14 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+" Scroll in float windows/popups.
+nnoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-a>"
+nnoremap <silent><nowait><expr> <C-s> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-s>"
+inoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-s> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-a>"
+vnoremap <silent><nowait><expr> <C-s> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-s>"
 
 
 "------------------------------------------------------------------------------

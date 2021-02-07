@@ -45,7 +45,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
 
 " The language rust official plugin
-" Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 " The vim-plug ends here
 call plug#end()
@@ -123,7 +123,7 @@ set shiftwidth=4        " auto indent width
 
 syntax enable
 set background=dark     " dark or light
-"colorscheme molokai     " solarized, wombat, molokai, candycode, kate, koehler
+"colorscheme PaperColor     " gruvbox, molokai, PaperColor, solarized, koehler
 
 
 "------------------------------------------------------------------------------
